@@ -5,4 +5,4 @@ This app allows devices with physical camera keys (such as the Sony Xperia serie
 
 # Release download
 
-(Click here)[https://github.com/Baozisoftware/CameraButtonHookbox/raw/master/app/release/app-release.apk]
+[Click here](https://github.com/Baozisoftware/CameraButtonHookbox/raw/master/app/release/app-release.apk)
