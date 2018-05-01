@@ -13,3 +13,5 @@ This app allows devices with physical camera keys (such as the Sony Xperia serie
 Wechat (微信)
 
 Google Photos Scaner (Goolgle照片扫描仪)
+
+TIM
