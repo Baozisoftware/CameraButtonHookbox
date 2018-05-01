@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">相机按钮</string>
-    <string name="supports">已支持的应用:\n微信\nGoolgle照片扫描仪</string>
+    <string name="supports">已支持的应用:\n微信\nGoolgle照片扫描仪\nTIM</string>
     <string name="tips">请先打开辅助功能后使用!\n(点这里前往)</string>
     <string name="txt">这App可以让带有实体相机键的设备\n(比如Sony Xperia系列)在没有适配的App上发挥作用.</string>
 </resources>

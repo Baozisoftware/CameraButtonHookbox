@@ -29,13 +29,17 @@ public class AccessibilitySampleService extends AccessibilityService {
 
     @Override
     protected boolean onKeyEvent(KeyEvent event) {
-        if (event.getAction() == KeyEvent.ACTION_DOWN) {
-            if (event.getKeyCode() == KeyEvent.KEYCODE_FOCUS) {
-                return doWork(false);
+        try {
+            if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                if (event.getKeyCode() == KeyEvent.KEYCODE_FOCUS) {
+                    return doWork(false);
+                }
+                if (event.getKeyCode() == KeyEvent.KEYCODE_CAMERA) {
+                    return doWork(true);
+                }
             }
-            if (event.getKeyCode() == KeyEvent.KEYCODE_CAMERA) {
-                return doWork(true);
-            }
+        } catch (Exception e) {
+
         }
         return super.onKeyEvent(event);
     }
@@ -72,10 +76,12 @@ public class AccessibilitySampleService extends AccessibilityService {
     private boolean clickByViewPath(int[] path) {
         int x, y;
         AccessibilityNodeInfo view = getRootInActiveWindow();
-        for (int i : path) {
-            view = view.getChild(i);
-            if (view == null)
-                return false;
+        if (path != null && path.length > 0) {
+            for (int i : path) {
+                view = view.getChild(i);
+                if (view == null)
+                    return false;
+            }
         }
         Rect rect = new Rect();
         view.getBoundsInScreen(rect);
@@ -91,6 +97,8 @@ public class AccessibilitySampleService extends AccessibilityService {
                 return doWechat(camera);
             case "com.google.android.apps.photos.scanner":
                 return doGooglePhotosScanner(camera);
+            case "com.tencent.tim":
+                return doTim(camera);
         }
         return false;
     }
@@ -103,7 +111,11 @@ public class AccessibilitySampleService extends AccessibilityService {
         return camera && clickByViewId("com.google.android.apps.photos.scanner:id/photos_scanner_home_start_capture_button_view");
     }
 
-    /*private void debug(AccessibilityNodeInfo view, Stack path) {
+    private boolean doTim(boolean camera) {
+        return !camera ? clickByViewPath(null) : clickByViewPath(new int[]{4});
+    }
+
+   /* private void debug(AccessibilityNodeInfo view, Stack path) {
         print(view, path);
         if (view.getChildCount() > 0) {
             for (int x = 0; x < view.getChildCount(); x++) {
